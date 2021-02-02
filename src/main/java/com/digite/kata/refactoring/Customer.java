@@ -19,6 +19,10 @@ class Customer {
         return _name;
     }
 
+    public Vector<Rental> get_rentals() {
+        return _rentals;
+    }
+
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;

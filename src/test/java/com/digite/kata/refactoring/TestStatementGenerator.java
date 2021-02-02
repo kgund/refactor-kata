@@ -13,10 +13,15 @@ public class TestStatementGenerator {
     public void setup() {
         statementGenerator = new StatementGenerator();
         customer = new Customer("Harry");
+
     }
 
     @Test
     public void testStatementForRegularMovie2Days() {
+        Movie movie = new Movie("The Soccerer's Stone", Movie.REGULAR);
+        Rental rental = new Rental(movie, 2);
+        customer.addRental(rental);
+
         String statement = statementGenerator.generateStatement(customer);
         String expectedStatement = "Rental Record for " + customer.getName() + "\n" +
                 "\tThe Soccerer's Stone\t" +
@@ -29,6 +34,9 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForRegularMovie4Days() {
+        Movie movie = new Movie("The Soccerer's Stone", Movie.REGULAR);
+        Rental rental = new Rental(movie, 4);
+        customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
         String expectedStatement = "Rental Record for " + customer.getName() + "\n" +
                 "\tThe Soccerer's Stone\t" +
@@ -41,6 +49,9 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForNewReleasedMovie1Day() {
+        Movie movie = new Movie("The Deathly Hallows", Movie.NEW_RELEASE);
+        Rental rental = new Rental(movie, 1);
+        customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
         String expectedStatement = "Rental Record for " + customer.getName() + "\n" +
                 "\tThe Deathly Hallows\t" +
@@ -53,6 +64,9 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForNewReleasedMovie2Days() {
+        Movie movie = new Movie("The Deathly Hallows", Movie.NEW_RELEASE);
+        Rental rental = new Rental(movie, 2);
+        customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
         String expectedStatement = "Rental Record for " + customer.getName() + "\n" +
                 "\tThe Deathly Hallows\t" +
@@ -65,6 +79,9 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForChildrenMovie1Day() {
+        Movie movie = new Movie("The Incredibles", Movie.CHILDRENS);
+        Rental rental = new Rental(movie, 1);
+        customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
         String expectedStatement = "Rental Record for " + customer.getName() + "\n" +
                 "\tThe Incredibles\t" +
@@ -77,6 +94,9 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForChildrenMovie4Days() {
+        Movie movie = new Movie("The Incredibles", Movie.CHILDRENS);
+        Rental rental = new Rental(movie, 4);
+        customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
         String expectedStatement = "Rental Record for " + customer.getName() + "\n" +
                 "\tThe Incredibles\t" +
@@ -89,6 +109,17 @@ public class TestStatementGenerator {
 
     @Test
     public void testAllTypes1Day() {
+        Movie movie1 = new Movie("The Soccerer's Stone", Movie.REGULAR);
+        Rental rental1 = new Rental(movie1, 1);
+        customer.addRental(rental1);
+        Movie movie2 = new Movie("The Deathly Hallows", Movie.NEW_RELEASE);
+        Rental rental2 = new Rental(movie2, 1);
+        customer.addRental(rental2);
+        Movie movie3 = new Movie("The Incredibles", Movie.CHILDRENS);
+        Rental rental3 = new Rental(movie3, 1);
+        customer.addRental(rental3);
+
+
         String statement = statementGenerator.generateStatement(customer);
         String expectedStatement = "Rental Record for " + customer.getName() + "\n" +
                 "\tThe Soccerer's Stone\t" +
