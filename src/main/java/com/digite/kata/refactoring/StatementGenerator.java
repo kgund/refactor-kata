@@ -1,29 +1,15 @@
 package com.digite.kata.refactoring;
 
 import java.util.Enumeration;
+import java.util.stream.Collectors;
 
 public class StatementGenerator {
-    public String generateStatement(Customer customer) {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
-        Enumeration rentals = customer.get_rentals().elements();
+    public String generateStatement(Customer customer, double totalAmount, int frequentRenterPoints) {
         String result = "Rental Record for " + customer.getName() + "\n";
-        while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
-            Rental each = (Rental) rentals.nextElement();
-            //determine amounts for each line
-            thisAmount += each.getMovie().calculateRent(each.getDaysRented());
-            // add frequent renter points
-            frequentRenterPoints++;
-            // add bonus for a two day new release rental
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE)
-                    &&
-                    each.getDaysRented() > 1) frequentRenterPoints++;
-            //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" +
-                    String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
-        }
+        result += customer.get_rentals().stream()
+                .map(each -> "\t" + each.getMovie().getTitle() + "\t" +
+                String.valueOf(each.getRent()) + "\n")
+                .collect(Collectors.joining());
         //add footer lines
         result += "Amount owed is " + String.valueOf(totalAmount) +
                 "\n";

@@ -1,6 +1,6 @@
 package com.digite.kata.refactoring;
 
-public class Rental {
+public abstract class Rental {
 
     private Movie _movie;
     private int _daysRented;
@@ -16,5 +16,11 @@ public class Rental {
 
     public int getDaysRented() {
         return _daysRented;
+    }
+
+    public abstract double getRent();
+
+    public int getRenterPoints() {
+        return 1;
     }
 }
