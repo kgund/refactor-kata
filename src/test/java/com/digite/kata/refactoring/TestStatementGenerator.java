@@ -18,7 +18,7 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForRegularMovie2Days() {
-        Movie movie = new Movie("The Soccerer's Stone", Movie.REGULAR);
+        Movie movie = new RegularMovie("The Soccerer's Stone", Movie.REGULAR);
         Rental rental = new Rental(movie, 2);
         customer.addRental(rental);
 
@@ -34,7 +34,7 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForRegularMovie4Days() {
-        Movie movie = new Movie("The Soccerer's Stone", Movie.REGULAR);
+        Movie movie = new RegularMovie("The Soccerer's Stone", Movie.REGULAR);
         Rental rental = new Rental(movie, 4);
         customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
@@ -49,7 +49,7 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForNewReleasedMovie1Day() {
-        Movie movie = new Movie("The Deathly Hallows", Movie.NEW_RELEASE);
+        Movie movie = new NewReleasedMovie("The Deathly Hallows", Movie.NEW_RELEASE);
         Rental rental = new Rental(movie, 1);
         customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
@@ -64,7 +64,7 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForNewReleasedMovie2Days() {
-        Movie movie = new Movie("The Deathly Hallows", Movie.NEW_RELEASE);
+        Movie movie = new NewReleasedMovie("The Deathly Hallows", Movie.NEW_RELEASE);
         Rental rental = new Rental(movie, 2);
         customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
@@ -79,7 +79,7 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForChildrenMovie1Day() {
-        Movie movie = new Movie("The Incredibles", Movie.CHILDRENS);
+        Movie movie = new ChildrenMovie("The Incredibles", Movie.CHILDRENS);
         Rental rental = new Rental(movie, 1);
         customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
@@ -94,7 +94,7 @@ public class TestStatementGenerator {
 
     @Test
     public void testStatementForChildrenMovie4Days() {
-        Movie movie = new Movie("The Incredibles", Movie.CHILDRENS);
+        Movie movie = new ChildrenMovie("The Incredibles", Movie.CHILDRENS);
         Rental rental = new Rental(movie, 4);
         customer.addRental(rental);
         String statement = statementGenerator.generateStatement(customer);
@@ -109,13 +109,13 @@ public class TestStatementGenerator {
 
     @Test
     public void testAllTypes1Day() {
-        Movie movie1 = new Movie("The Soccerer's Stone", Movie.REGULAR);
+        Movie movie1 = new RegularMovie("The Soccerer's Stone", Movie.REGULAR);
         Rental rental1 = new Rental(movie1, 1);
         customer.addRental(rental1);
-        Movie movie2 = new Movie("The Deathly Hallows", Movie.NEW_RELEASE);
+        Movie movie2 = new NewReleasedMovie("The Deathly Hallows", Movie.NEW_RELEASE);
         Rental rental2 = new Rental(movie2, 1);
         customer.addRental(rental2);
-        Movie movie3 = new Movie("The Incredibles", Movie.CHILDRENS);
+        Movie movie3 = new ChildrenMovie("The Incredibles", Movie.CHILDRENS);
         Rental rental3 = new Rental(movie3, 1);
         customer.addRental(rental3);
 
